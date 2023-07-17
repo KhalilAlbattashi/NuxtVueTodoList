@@ -19,7 +19,7 @@
     <ul>
       <li v-for="todo in todos" :key="todo.id" class="flex items-center mb-2">
         <span class="mr-2">{{ todo.text }}</span>
-        <span v-if="todo.group" :class="getGroupStyle(todo.group)" class="me-2 text-sm text-white rounded-full px-2 py-1">{{ todo.group }}</span>
+        <span v-if="todo.group" :class="getGroupStyle(todo.group)" class="me-2 text-sm text-white rounded-md px-2 py-1">{{ todo.group }}</span>
         <button @click="deleteTodo(todo.id)" class="me-2 px-2 py-1 bg-red-500 text-white rounded-md">Delete</button>
         <button @click="editTodo(todo)" class="me-2 px-2 py-1 bg-blue-500 text-white rounded-md">Edit</button>
       </li>
