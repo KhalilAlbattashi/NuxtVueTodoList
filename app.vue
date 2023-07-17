@@ -54,32 +54,37 @@ export default {
       newTodo: '',
       newTodoGroup: '',
       showEditModal: false,
-      editTodoId: null,
+      editTodoId: -1,
       editTodoText: '',
       editTodoGroup: '',
     };
   },
   methods: {
-    addTodo() {
+    // CREAT TODO
+    createTodo() {
       const newTodo = {
         id: Math.random(),
         text: this.newTodo,
         group: this.newTodoGroup,
       };
       this.todos.push(newTodo);
-      // reset the values inside the form
       this.newTodo = '';
       this.newTodoGroup = '';
     },
+
+    // delete todo by id
     deleteTodo(id) {
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
+
+    // prpare everythig to update todo
     editTodo(todo) {
       this.editTodoId = todo.id;
       this.editTodoText = todo.text;
       this.editTodoGroup = todo.group ;
       this.showEditModal = true;
     },
+    // update todo
     updateTodo() {
       const todo = this.todos.find((todo) => todo.id === this.editTodoId);
       if (todo) {
@@ -88,12 +93,14 @@ export default {
       }
       this.cancelEdit();
     },
+    // set all values to defult and hide update page 
     cancelEdit() {
       this.showEditModal = false;
-      this.editTodoId = null;
+      this.editTodoId = -1;
       this.editTodoText = '';
       this.editTodoGroup = '';
     },
+    // get the style of the groupe lable by group name
     getGroupStyle(group) {
       const styles = {
         Home: 'bg-blue-500',
@@ -101,9 +108,8 @@ export default {
         Work: 'bg-yellow-500',
         Personal: 'bg-purple-500',
       };
-      return styles[group];
+      return styles[group] ;
     },
   },
 };
 </script>
-
